@@ -90,22 +90,11 @@
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_canvas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/canvas */ \"./src/js/canvas.js\");\n/* harmony import */ var _js_canvas__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_canvas__WEBPACK_IMPORTED_MODULE_0__);\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
-
-/***/ }),
-
-/***/ "./src/js/canvas.js":
-/*!**************************!*\
-  !*** ./src/js/canvas.js ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("let canvas = document.getElementById(\"myCanvas\");\nlet ctx = canvas.getContext(\"2d\");\n\n\n\n//# sourceURL=webpack:///./src/js/canvas.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return players; });\n!(function webpackMissingModule() { var e = new Error(\"Cannot find module './map'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\n\n\nlet naruto = new Image();\nnaruto.src = \"../src/images/sprites/naruto.png\";\nnaruto.onload = function(){\n  players();\n};\n\nlet sasuke = new Image();\nsasuke.src = \"../src/images/sprites/sasuke.png\";\nsasuke.onload = function(){\n  players();\n};\n\nlet canvas = document.getElementById('ninjaBomberCanvas');\nlet ctx = canvas.getContext('2d');\n\nconst spriteSheetWidth = 28;\nconst spriteSheetHeight = 46;\nconst startingX = 28.7;\nconst startingY = 28.7;\nconst spriteWidth = 20;\nconst spriteHeight = 28.7;\n\nconst spriteXStartPos = 10;\nconst spriteYStartPos = 9;\nconst spriteXOffset = 46;\nconst spriteYOffset = 65;\nconst xMapOffset = 225.3;\n\nfunction drawFrame(frameX, frameY, canvasX, canvasY){\n  ctx.drawImage(\n    naruto, \n    (frameX * spriteXOffset) + spriteXStartPos,\n    (frameY * spriteYOffset) + spriteYStartPos,\n    spriteSheetWidth,\n    spriteSheetHeight,\n    startingX * canvasX,\n    startingY * canvasY,\n    spriteWidth,\n    spriteHeight\n  );\n}\n\nconst cycleLoop = [0, 1, 2, 3];\nlet currentLoopIndex = 0;\nlet frameCount = 0;\n\nfunction step() {\n  frameCount++;\n  if (frameCount < 20){\n    window.requestAnimationFrame(step);\n    return;\n  }\n  frameCount=0;\n  ctx.clearRect(0, 0, canvas.width, canvas.height);\n  !(function webpackMissingModule() { var e = new Error(\"Cannot find module './map'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }())();\n  drawFrame(cycleLoop[currentLoopIndex], 0, 0, 0);\n  currentLoopIndex++;\n  if (currentLoopIndex >= cycleLoop.length) {\n    currentLoopIndex = 0;\n  }\n  // window.requestAnimationFrame(step);\n}\n\nfunction players(){\n  // drawFrame(0,0,0,0);\n  // drawFrame(1,0,1,0);\n  // drawFrame(2,0,2,0);\n  // drawFrame(3,0,3,0);\n  window.requestAnimationFrame(step);\n  // ctx.drawImage(\n  //   naruto,\n  //   10,\n  //   74,\n  //   28,\n  //   46,\n  //   0,\n  //   0,\n  //   20,\n  //   28.7\n  // );\n}\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
