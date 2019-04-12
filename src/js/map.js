@@ -1,0 +1,77 @@
+let mapComponents = new Image();
+mapComponents.src = "../src/images/sprites/MapAndBomb.png";
+mapComponents.onload = function(){
+  mapping();
+};
+
+let canvas = document.getElementById('ninjaBomberCanvas');
+let ctx = canvas.getContext('2d');
+
+// RELATED TO SPRITE
+// sx: x position on sprite sheet
+// sy: y position on sprite sheet
+// sWdith: width of sprite to cut from x position
+// sHeight: hieght of sprite to cut from y position
+
+// RELATED TO CANVAS
+// dx: canvas x position
+// dy: canvas y position
+// dWdith: Width of cut out sprite shown on canvas
+// dHeight: Height of cut out sprite shown on canvas
+
+//constants for mapping
+const spriteSheetWidth = 47.5;
+const spriteSheetHeight = 47.5;
+const startingX = 28.7;
+const startingY = 28.7;
+const spriteMapWidth = 28.7;
+const spriteMapHeight = 28.7;
+
+const spriteXStartPos = 3.5;
+const spriteYStartPos = 2.5;
+const spriteXOffset = 52;
+const spriteYOffset = 52.5;
+const xMapOffset = 220;
+
+function drawMap(frameX, frameY, canvasX, canvasY){
+  ctx.drawImage(
+    mapComponents, 
+    (frameX * spriteXOffset) + spriteXStartPos,
+    (frameY * spriteYOffset) + spriteYStartPos,
+    spriteSheetWidth,
+    spriteSheetHeight,
+    (startingX * canvasX) + xMapOffset,
+    (startingY * canvasY),
+    spriteMapWidth,
+    spriteMapHeight
+  );
+}
+
+export default function mapping(){
+  for (let i = 0; i < 15; i++) {
+    for (let j = 0; j < 15; j++) {
+      if(i === 0 || j === 0 || i === 14 || j === 14 || ((i % 2 === 0) && (j % 2 === 0))){
+        // unbreakable walls
+        drawMap(1, 0, i, j);
+      } else if((j < 2 && (j - 1) % 2 === 0) || ((j-1) % 2 === 0 && (i) % 2 === 0)){
+        // grass with top shadow
+        drawMap(4, 0, i, j);
+      } else{
+        // grass without shadow
+        drawMap(3, 0, i, j);
+      }
+    }
+  }
+  // for testing
+  // ctx.drawImage(
+  //   naruto,
+  //   10,
+  //   74,
+  //   28,
+  //   46,
+  //   0,
+  //   0,
+  //   20,
+  //   28.7
+  // );
+}

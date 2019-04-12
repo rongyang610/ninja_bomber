@@ -1,1 +1,2 @@
-import * as Canvas from './js/canvas';
+import placeMap from './js/map';
+import players from './js/players';

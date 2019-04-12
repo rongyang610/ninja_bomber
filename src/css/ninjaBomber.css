@@ -32,7 +32,5 @@ canvas {
   background: #eee; 
   display: block;
   border: 1px solid black; 
-  width: 650px;
-  height: 430px;
   margin-top: 20px;
 }
