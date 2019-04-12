@@ -1,5 +1,4 @@
 import placeMap from './map';
-import mapping from './map';
 
 let naruto = new Image();
 naruto.src = "../src/images/sprites/naruto.png";
@@ -61,7 +60,7 @@ function step() {
   if (currentLoopIndex >= cycleLoop.length) {
     currentLoopIndex = 0;
   }
-  window.requestAnimationFrame(step);
+  // window.requestAnimationFrame(step);
 }
 
 export default function players(){
