@@ -28,46 +28,21 @@ const spriteXOffset = 46;
 const spriteYOffset = 65;
 const xMapOffset = 225.3;
 
-function drawFrame(frameX, frameY, canvasX, canvasY){
+function drawFrame(player, frameX, frameY, canvasX, canvasY){
   ctx.drawImage(
-    naruto, 
+    player, 
     (frameX * spriteXOffset) + spriteXStartPos,
     (frameY * spriteYOffset) + spriteYStartPos,
     spriteSheetWidth,
     spriteSheetHeight,
-    startingX * canvasX,
+    startingX * canvasX + xMapOffset,
     startingY * canvasY,
     spriteWidth,
     spriteHeight
   );
 }
 
-const cycleLoop = [0, 1, 2, 3];
-let currentLoopIndex = 0;
-let frameCount = 0;
-
-function step() {
-  frameCount++;
-  if (frameCount < 20){
-    window.requestAnimationFrame(step);
-    return;
-  }
-  frameCount=0;
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  placeMap();
-  drawFrame(cycleLoop[currentLoopIndex], 0, 0, 0);
-  currentLoopIndex++;
-  if (currentLoopIndex >= cycleLoop.length) {
-    currentLoopIndex = 0;
-  }
-  // window.requestAnimationFrame(step);
-}
-
 export default function players(){
-  // drawFrame(0,0,0,0);
-  // drawFrame(1,0,1,0);
-  // drawFrame(2,0,2,0);
-  // drawFrame(3,0,3,0);
   window.requestAnimationFrame(step);
   // ctx.drawImage(
   //   naruto,
