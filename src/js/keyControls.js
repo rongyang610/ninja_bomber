@@ -29,6 +29,15 @@ class keyControls{
     this.update = 3;
     this.narutoPos = 0;
     this.sasukePos = 0;
+
+    this.narBomb1 = {x: 0, y:0};
+    this.narBomb2 = {x: 0, y:0};
+    this.narBomb3 = {x: 0, y:0};
+
+    this.sasBomb1 = {x: 0, y:0};
+    this.sasBomb2 = {x: 0, y:0};
+    this.sasBomb3 = {x: 0, y:0};
+
   }
 
   narutoKeyDownHandler(e){
