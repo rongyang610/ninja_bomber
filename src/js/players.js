@@ -1,58 +1,55 @@
-import placeMap from './map';
+class Player{
+  constructor(ctx, xPos, yPos, xOffsetPlayer, nameImg){
+    this.ctx = ctx;
+    this.xPos = xPos;
+    this.yPos = yPos;
+    this.nameImg = nameImg;
 
-let naruto = new Image();
-naruto.src = "../src/images/sprites/naruto.png";
-naruto.onload = function(){
-  players();
-};
+    this.spriteSheetWidth = 28;
+    this.spriteSheetHeight = 46;
+    this.startingX = 28.7;
+    this.startingY = 28.7;
+    this.spriteWidth = 20;
+    this.spriteHeight = 28.7;
 
-let sasuke = new Image();
-sasuke.src = "../src/images/sprites/sasuke.png";
-sasuke.onload = function(){
-  players();
-};
+    this.spriteXStartPos = (10 - xOffsetPlayer);
+    this.spriteYStartPos = 9;
+    this.spriteXOffset = 46;
+    this.spriteYOffset = 65;
+    this.xMapOffset = 225.3;
 
-let canvas = document.getElementById('ninjaBomberCanvas');
-let ctx = canvas.getContext('2d');
+    this.cycleLoop = [0, 1, 2, 3];
+    this.cols = 4;
+    this.row = 4;
+    this.currentFrame = 0;
+    this.currentLoopIndex = 0;
+    this.obj = true;
+  }
 
-const spriteSheetWidth = 28;
-const spriteSheetHeight = 46;
-const startingX = 28.7;
-const startingY = 28.7;
-const spriteWidth = 20;
-const spriteHeight = 28.7;
+  step(direction) {
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //not gonna animate right now
+    this.drawFrame(this.nameImg, 0, direction, this.xPos, this.yPos);
+    this.currentLoopIndex++;
+    if (this.currentLoopIndex >= this.cycleLoop.length) {
+      this.currentLoopIndex = 0;
+    }
+    // requestAnimationFrame(this.step.bind(this));
+  }
 
-const spriteXStartPos = 10;
-const spriteYStartPos = 9;
-const spriteXOffset = 46;
-const spriteYOffset = 65;
-const xMapOffset = 225.3;
-
-function drawFrame(player, frameX, frameY, canvasX, canvasY){
-  ctx.drawImage(
-    player, 
-    (frameX * spriteXOffset) + spriteXStartPos,
-    (frameY * spriteYOffset) + spriteYStartPos,
-    spriteSheetWidth,
-    spriteSheetHeight,
-    startingX * canvasX + xMapOffset,
-    startingY * canvasY,
-    spriteWidth,
-    spriteHeight
-  );
+  drawFrame(nameImg, frameX, frameY, canvasX, canvasY){
+    this.ctx.drawImage(
+      nameImg, 
+      (frameX * this.spriteXOffset) + this.spriteXStartPos,
+      (frameY * this.spriteYOffset) + this.spriteYStartPos,
+      this.spriteSheetWidth,
+      this.spriteSheetHeight,
+      this.startingX * canvasX + this.xMapOffset,
+      this.startingY * canvasY,
+      this.spriteWidth,
+      this.spriteHeight
+    );
+  }
 }
 
-export default function players(){
-  window.requestAnimationFrame(step);
-  // ctx.drawImage(
-  //   naruto,
-  //   10,
-  //   74,
-  //   28,
-  //   46,
-  //   0,
-  //   0,
-  //   20,
-  //   28.7
-  // );
-}
+export default Player;

@@ -1,5 +1,3 @@
-
-
 const cycleLoop = [0, 1, 2, 3];
 let currentLoopIndex = 0;
 let frameCount = 0;

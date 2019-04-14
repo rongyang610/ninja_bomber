@@ -1,8 +1,6 @@
 let mapComponents = new Image();
 mapComponents.src = "../src/images/sprites/MapAndBomb.png";
-mapComponents.onload = function(){
-  mapping();
-};
+mapComponents.onload = () => mapping();
 
 let canvas = document.getElementById('ninjaBomberCanvas');
 let ctx = canvas.getContext('2d');
@@ -62,7 +60,7 @@ export default function mapping(){
       }
     }
   }
-  // for testing
+  // for testingsa
   // ctx.drawImage(
   //   naruto,
   //   10,
