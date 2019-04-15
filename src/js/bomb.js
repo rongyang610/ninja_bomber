@@ -19,9 +19,6 @@ class bomb{
     this.xMapOffset = 220;
   }
 
-  step(){
-  }
-
   drawBomb(frameX, frameY, canvasX, canvasY){
     this.ctx.drawImage(
       this.bombImg, 
