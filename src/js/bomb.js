@@ -16,7 +16,8 @@ class bomb{
     this.spriteMapWidth = 28.7;
     this.spriteMapHeight = 28.7;
 
-    this.timer = 1500;
+    this.placed = false;
+    this.explodedSet = false;
     this.xMapOffset = 220;
   }
 
@@ -35,7 +36,16 @@ class bomb{
   }
 
   placeBomb(){
-    this.drawBomb(0,2,this.xPos, this.yPos);
+    if (this.placed === false){
+      this.drawBomb(0,2,this.xPos, this.yPos);
+      if (!this.explodedSet){
+        setTimeout(() =>{
+           this.explodeBomb();
+           this.placed = true;
+          }, 1500);
+        this.explodedSet = false;
+      }
+    }
   }
 
   explodeBomb(){
