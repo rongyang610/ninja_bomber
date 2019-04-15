@@ -80,7 +80,6 @@ class keyControls{
       this.sPressed = true;
       if (this.player1.yPos !== 13 && this.player1.xPos % 2 !== 0 && 
         !((this.player1.xPos === this.player2.xPos && (this.player1.yPos + 1) === this.player2.yPos)) &&
-        !(((this.player1.xPos - 1) === this.player2.xPos && this.player1.yPos === this.player2.yPos)) &&
         !((this.narBomb1.x === this.player1.xPos) && (this.narBomb1.y === this.player1.yPos + 1)) &&
         !((this.narBomb2.x === this.player1.xPos) && (this.narBomb2.y === this.player1.yPos + 1)) &&
         !((this.narBomb3.x === this.player1.xPos) && (this.narBomb3.y === this.player1.yPos + 1)) &&
@@ -142,17 +141,7 @@ class keyControls{
           this.narBombs.shift();
         }, 3000);
       }
-      // if(this.narBomb1.display === false){
-      //   this.narBomb1 = true;
-      //   this.narBomb1.x = this.player1.xPos;
-      //   this.narBomb1.y = this.player1.yPos;
-      //   setTimeout( () => {this.narBomb1 = {x:0, y:0, display: false};}, 3000);
-      // }
     }
-  }
-
-  removeBomb(){
-
   }
 
   narutoKeyUpHandler(e){
@@ -173,7 +162,14 @@ class keyControls{
     if (e.which == 38){
       this.upPressed = true;
       if (this.player2.yPos !== 1 && this.player2.xPos % 2 !== 0 && 
-        !((this.player1.xPos === this.player2.xPos && (this.player2.yPos - 1) === this.player1.yPos))){
+        !((this.player1.xPos === this.player2.xPos && (this.player2.yPos - 1) === this.player1.yPos)) &&
+        !((this.narBomb1.x === this.player2.xPos) && (this.narBomb1.y === this.player2.yPos -1)) &&
+        !((this.narBomb2.x === this.player2.xPos) && (this.narBomb2.y === this.player2.yPos -1)) &&
+        !((this.narBomb3.x === this.player2.xPos) && (this.narBomb3.y === this.player2.yPos -1)) &&
+        !((this.sasBomb1.x === this.player2.xPos) && (this.sasBomb1.y === this.player2.yPos - 1)) &&
+        !((this.sasBomb2.x === this.player2.xPos) && (this.sasBomb2.y === this.player2.yPos - 1)) &&
+        !((this.sasBomb3.x === this.player2.xPos) && (this.sasBomb3.y === this.player2.yPos - 1))
+        ){
         this.player2.yPos -= 1;
         this.sasukePos = 3;
       } else {
@@ -181,7 +177,14 @@ class keyControls{
       }
     } else if (e.which === 37){
       if (this.player2.xPos !== 1 && this.player2.yPos % 2 !== 0 && 
-        !(((this.player2.xPos - 1) === this.player1.xPos && this.player1.yPos === this.player2.yPos))){
+        !(((this.player2.xPos - 1) === this.player1.xPos && this.player1.yPos === this.player2.yPos)) &&
+        !((this.narBomb1.x === this.player2.xPos - 1) && (this.narBomb1.y === this.player2.yPos)) &&
+        !((this.narBomb2.x === this.player2.xPos - 1) && (this.narBomb2.y === this.player2.yPos)) &&
+        !((this.narBomb3.x === this.player2.xPos - 1) && (this.narBomb3.y === this.player2.yPos)) &&
+        !((this.sasBomb1.x === this.player2.xPos - 1) && (this.sasBomb1.y === this.player2.yPos)) &&
+        !((this.sasBomb2.x === this.player2.xPos - 1) && (this.sasBomb2.y === this.player2.yPos)) &&
+        !((this.sasBomb3.x === this.player2.xPos - 1) && (this.sasBomb3.y === this.player2.yPos))
+        ){
         this.player2.xPos -= 1;
         this.sasukePos = 1;
       } else {
@@ -189,7 +192,14 @@ class keyControls{
       }
     } else if (e.which === 40){
       if (this.player2.yPos !== 13 && this.player2.xPos % 2 !== 0 && 
-        !((this.player1.xPos === this.player2.xPos && (this.player2.yPos + 1) === this.player1.yPos))){
+        !((this.player1.xPos === this.player2.xPos && (this.player2.yPos + 1) === this.player1.yPos)) &&
+        !((this.narBomb1.x === this.player2.xPos) && (this.narBomb1.y === this.player2.yPos + 1)) &&
+        !((this.narBomb2.x === this.player2.xPos) && (this.narBomb2.y === this.player2.yPos + 1)) &&
+        !((this.narBomb3.x === this.player2.xPos) && (this.narBomb3.y === this.player2.yPos + 1)) &&
+        !((this.sasBomb1.x === this.player2.xPos) && (this.sasBomb1.y === this.player2.yPos + 1)) &&
+        !((this.sasBomb2.x === this.player2.xPos) && (this.sasBomb2.y === this.player2.yPos + 1)) &&
+        !((this.sasBomb3.x === this.player2.xPos) && (this.sasBomb3.y === this.player2.yPos + 1))
+        ){
         this.player2.yPos += 1;
         this.sasukePos = 0;
       } else {
@@ -197,7 +207,14 @@ class keyControls{
       }
     } else if (e.which === 39){
       if (this.player2.xPos !== 13 && this.player2.yPos % 2 !== 0 && 
-        !(((this.player2.xPos + 1) === this.player1.xPos && this.player1.yPos === this.player2.yPos))){
+        !(((this.player2.xPos + 1) === this.player1.xPos && this.player1.yPos === this.player2.yPos)) &&
+        !((this.narBomb1.x === this.player2.xPos + 1) && (this.narBomb1.y === this.player2.yPos)) &&
+        !((this.narBomb2.x === this.player2.xPos + 1) && (this.narBomb2.y === this.player2.yPos)) &&
+        !((this.narBomb3.x === this.player2.xPos + 1) && (this.narBomb3.y === this.player2.yPos)) &&
+        !((this.sasBomb1.x === this.player2.xPos + 1) && (this.sasBomb1.y === this.player2.yPos)) &&
+        !((this.sasBomb2.x === this.player2.xPos + 1) && (this.sasBomb2.y === this.player2.yPos)) &&
+        !((this.sasBomb3.x === this.player2.xPos + 1) && (this.sasBomb3.y === this.player2.yPos))
+        ){
         this.player2.xPos += 1;
         this.sasukePos = 2;
       } else {
@@ -205,7 +222,37 @@ class keyControls{
       }
     }
     if (e.which === 190){
-      this.perPressed = true;
+      if(this.sasBombs.length === 0){
+        this.sasBomb1.display = true;
+        this.sasBomb1.x = this.player2.xPos;
+        this.sasBomb1.y = this.player2.yPos;
+        let droppedSasBomb1 = new Bomb(this.ctx, this.bombImg, this.sasBomb1.x, this.sasBomb1.y);
+        this.sasBombs.push(droppedSasBomb1);
+        setTimeout( () => {
+          this.sasBomb1 = {x:0, y:0, display: false};
+          this.sasBombs.shift();
+        }, 3000);
+      } else if (this.sasBombs.length === 1){
+        this.sasBomb2.display = true;
+        this.sasBomb2.x = this.player2.xPos;
+        this.sasBomb2.y = this.player2.yPos;
+        let droppedSasBomb2 = new Bomb(this.ctx, this.bombImg, this.sasBomb2.x, this.sasBomb2.y);
+        this.sasBombs.push(droppedSasBomb2);
+        setTimeout( () => {
+          this.sasBomb2 = {x:0, y:0, display: false};
+          this.sasBombs.shift();
+        }, 3000);
+      } else if (this.sasBombs.length === 2){
+        this.sasBomb3.display = true;
+        this.sasBomb3.x = this.player2.xPos;
+        this.sasBomb3.y = this.player2.yPos;
+        let droppedsasBomb3 = new Bomb(this.ctx, this.bombImg, this.sasBomb3.x, this.sasBomb3.y);
+        this.sasBombs.push(droppedsasBomb3);
+        setTimeout( () => {
+          this.sasBomb3 = {x:0, y:0, display: false};
+          this.sasBombs.shift();
+        }, 3000);
+      }
     }
   }
 
@@ -219,9 +266,6 @@ class keyControls{
       this.downPressed = false;
     } else if (e.which === 39){
       this.rightPressed = false;
-    }
-    if (e.which === 190){
-      this.perPressed = false;
     }
   }
 
@@ -244,6 +288,16 @@ class keyControls{
       this.narBombs[0].explodeBomb();
       this.narBombs[1].explodeBomb();
       this.narBombs[2].explodeBomb();
+    }
+    if (this.sasBombs.length === 1){
+      this.sasBombs[0].explodeBomb();
+    } else if (this.sasBombs.length === 2){
+      this.sasBombs[0].explodeBomb();
+      this.sasBombs[1].explodeBomb();
+    } else if (this.sasBombs.length === 3){
+      this.sasBombs[0].explodeBomb();
+      this.sasBombs[1].explodeBomb();
+      this.sasBombs[2].explodeBomb();
     }
     this.player1.step(this.narutoPos);
     this.player2.step(this.sasukePos);
