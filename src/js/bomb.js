@@ -6,7 +6,7 @@ class bomb{
     this.yPos = yPos;
 
     this.spriteXStartPos = 3.5;
-    this.spriteYStartPos = 2.5;
+    this.spriteYStartPos = 3;
     this.spriteXOffset = 52;
     this.spriteYOffset = 52;
     this.spriteSheetWidth = 47;
@@ -33,8 +33,23 @@ class bomb{
     );
   }
 
-  explodeBomb(){
+  placeBomb(){
     this.drawBomb(0,2,this.xPos, this.yPos);
+  }
+
+  explodeBomb(){
+    this.drawBomb(5, 3, this.xPos, this.yPos);
+    this.explodeUpWard();
+  }
+
+  explodeUpWard(){
+    for (let j = this.yPos - 1; j > 0; j--) {
+      if (j === 1){
+        this.drawBomb(7, 1, this.xPos, j);
+      } else{
+        this.drawBomb(5, 4, this.xPos, j);
+      }
+    }
   }
 }
 

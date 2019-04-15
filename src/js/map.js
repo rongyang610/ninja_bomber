@@ -51,9 +51,10 @@ export default function mapping(){
       if(i === 0 || j === 0 || i === 14 || j === 14 || ((i % 2 === 0) && (j % 2 === 0))){
         // unbreakable walls
         drawMap(1, 0, i, j);
-      } else if((j < 2 && (j - 1) % 2 === 0) || ((j-1) % 2 === 0 && (i) % 2 === 0)){
-        // grass with top shadow
-        drawMap(4, 0, i, j);
+        //shadows on grass
+      // } else if((j < 2 && (j - 1) % 2 === 0) || ((j-1) % 2 === 0 && (i) % 2 === 0)){
+      //   // grass with top shadow
+      //   drawMap(4, 0, i, j);
       } else{
         // grass without shadow
         drawMap(3, 0, i, j);

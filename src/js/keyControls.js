@@ -33,7 +33,8 @@ class keyControls{
     this.narBomb1 = {x:0, y:0, bombDisplay: false, explodeDisplay: false};
     this.narBomb2 = {x:0, y:0, bombDisplay: false, explodeDisplay: false};
     this.narBomb3 = {x:0, y:0, bombDisplay: false, explodeDisplay: false};
-    this.narBombs = [];
+    this.narPlaceBombs = [];
+    this.narExBombs = [];
 
     this.sasBomb1 = {x:0, y:0, bombDisplay: false, explodeDisplay: false};
     this.sasBomb2 = {x:0, y:0, bombDisplay: false, explodeDisplay: false};
@@ -110,35 +111,38 @@ class keyControls{
       }
     }
     if (e.which === 67){
-      if(this.narBombs.length === 0){
+      if(this.narPlaceBombs.length === 0){
         this.narBomb1.bombDisplay = true;
         this.narBomb1.x = this.player1.xPos;
         this.narBomb1.y = this.player1.yPos;
         let droppedNarBomb1 = new Bomb(this.ctx, this.bombImg, this.narBomb1.x, this.narBomb1.y);
-        this.narBombs.push(droppedNarBomb1);
+        this.narPlaceBombs.push(droppedNarBomb1);
         setTimeout( () => {
           this.narBomb1 = {x:0, y:0, bombDisplay: false, explodeDisplay: true};
-          this.narBombs.shift();
+          let moveNarBomb1 = this.narPlaceBombs.shift();
+          this.narExBombs.push(moveNarBomb1);
         }, 1500);
-      } else if (this.narBombs.length === 1){
+      } else if (this.narPlaceBombs.length === 1){
         this.narBomb2.bombDisplay = true;
         this.narBomb2.x = this.player1.xPos;
         this.narBomb2.y = this.player1.yPos;
         let droppedNarBomb2 = new Bomb(this.ctx, this.bombImg, this.narBomb2.x, this.narBomb2.y);
-        this.narBombs.push(droppedNarBomb2);
+        this.narPlaceBombs.push(droppedNarBomb2);
         setTimeout( () => {
           this.narBomb2 = {x:0, y:0, bombDisplay: false, explodeDisplay: true};
-          this.narBombs.shift();
+          let moveNarBomb2 = this.narPlaceBombs.shift();
+          this.narExBombs.push(moveNarBomb2);
         }, 1500);
-      } else if (this.narBombs.length === 2){
+      } else if (this.narPlaceBombs.length === 2){
         this.narBomb3.bombDisplay = true;
         this.narBomb3.x = this.player1.xPos;
         this.narBomb3.y = this.player1.yPos;
         let droppedNarBomb3 = new Bomb(this.ctx, this.bombImg, this.narBomb3.x, this.narBomb3.y);
-        this.narBombs.push(droppedNarBomb3);
+        this.narPlaceBombs.push(droppedNarBomb3);
         setTimeout( () => {
           this.narBomb3 = {x:0, y:0, bombDisplay: false, explodeDisplay: true};
-          this.narBombs.shift();
+          let moveNarBomb3 = this.narPlaceBombs.shift();
+          this.narExBombs.push(moveNarBomb3);
         }, 1500);
       }
     }
@@ -279,25 +283,38 @@ class keyControls{
   step(){
     this.ctx.clearRect(220, 0, this.canvas.width, this.canvas.height);
     placeMap();
-    if (this.narBombs.length === 1){
-      this.narBombs[0].explodeBomb();
-    } else if (this.narBombs.length === 2){
-      this.narBombs[0].explodeBomb();
-      this.narBombs[1].explodeBomb();
-    } else if (this.narBombs.length === 3){
-      this.narBombs[0].explodeBomb();
-      this.narBombs[1].explodeBomb();
-      this.narBombs[2].explodeBomb();
+    //naruto bomb
+    if (this.narPlaceBombs.length === 1){
+      this.narPlaceBombs[0].placeBomb();
+    } else if (this.narPlaceBombs.length === 2){
+      this.narPlaceBombs[0].placeBomb();
+      this.narPlaceBombs[1].placeBomb();
+    } else if (this.narPlaceBombs.length === 3){
+      this.narPlaceBombs[0].placeBomb();
+      this.narPlaceBombs[1].placeBomb();
+      this.narPlaceBombs[2].placeBomb();
     }
+
+    if (this.narExBombs.length === 1){
+      if (this.narBomb1.explodeDisplay === true){
+        setTimeout( () => {
+          this.narBomb1 = {x:0, y:0, bombDisplay: false, explodeDisplay: false};
+          this.narExBombs.shift();
+        }, 500);
+      }
+      this.narExBombs[0].explodeBomb();
+    }
+
+    //sasuke bomb
     if (this.sasBombs.length === 1){
-      this.sasBombs[0].explodeBomb();
+      this.sasBombs[0].placeBomb();
     } else if (this.sasBombs.length === 2){
-      this.sasBombs[0].explodeBomb();
-      this.sasBombs[1].explodeBomb();
+      this.sasBombs[0].placeBomb();
+      this.sasBombs[1].placeBomb();
     } else if (this.sasBombs.length === 3){
-      this.sasBombs[0].explodeBomb();
-      this.sasBombs[1].explodeBomb();
-      this.sasBombs[2].explodeBomb();
+      this.sasBombs[0].placeBomb();
+      this.sasBombs[1].placeBomb();
+      this.sasBombs[2].placeBomb();
     }
     this.player1.step(this.narutoPos);
     this.player2.step(this.sasukePos);
