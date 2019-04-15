@@ -16,6 +16,7 @@ class bomb{
     this.spriteMapWidth = 28.7;
     this.spriteMapHeight = 28.7;
 
+    this.timer = 1500;
     this.xMapOffset = 220;
   }
 
@@ -92,7 +93,6 @@ class bomb{
       }
     }
   }
-
 }
 
 export default bomb;

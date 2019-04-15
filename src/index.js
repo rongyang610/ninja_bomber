@@ -17,7 +17,7 @@ bomb.src = "../src/images/sprites/MapAndBomb.png";
 
 let controls = new keyControls(ctx, canvas, sasuke, naruto, bomb);
 controls.eventListner();
-controls.step();
+controls.render();
 
 // function bomberDraw(){
 //   // ctx.drawImage(
