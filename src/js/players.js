@@ -21,25 +21,16 @@ class Player{
     this.cycleLoop = [0, 1, 2, 3];
     this.cols = 4;
     this.row = 4;
-    this.currentFrame = 0;
-    this.currentLoopIndex = 0;
     this.obj = true;
   }
 
   step(direction) {
-    // ctx.clearRect(0, 0, canvas.width, canvas.height);
-    //not gonna animate right now
-    this.drawFrame(this.nameImg, 0, direction, this.xPos, this.yPos);
-    this.currentLoopIndex++;
-    if (this.currentLoopIndex >= this.cycleLoop.length) {
-      this.currentLoopIndex = 0;
-    }
-    // requestAnimationFrame(this.step.bind(this));
+    this.drawFrame(0, direction, this.xPos, this.yPos);
   }
 
-  drawFrame(nameImg, frameX, frameY, canvasX, canvasY){
+  drawFrame(frameX, frameY, canvasX, canvasY){
     this.ctx.drawImage(
-      nameImg, 
+      this.nameImg, 
       (frameX * this.spriteXOffset) + this.spriteXStartPos,
       (frameY * this.spriteYOffset) + this.spriteYStartPos,
       this.spriteSheetWidth,

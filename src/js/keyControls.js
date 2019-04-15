@@ -1,12 +1,12 @@
 import Player from './players';
 import placeMap from './map';
+import Bomb from './bomb';
 
 class keyControls{
-  constructor(ctx, canvas, sasuke, naruto){
+  constructor(ctx, canvas, sasuke, naruto, bombImg){
     this.ctx = ctx;
     this.canvas = canvas;
-    this.sasuke = sasuke;
-    this.naruto = naruto;
+    this.bombImg = bombImg;
     this.player1 = new Player(ctx, 1, 1, 0, naruto);
     this.player2 = new Player(ctx, 13, 13, 3, sasuke);
     // first player
@@ -30,13 +30,13 @@ class keyControls{
     this.narutoPos = 0;
     this.sasukePos = 0;
 
-    this.narBomb1 = {x: 0, y:0};
-    this.narBomb2 = {x: 0, y:0};
-    this.narBomb3 = {x: 0, y:0};
+    this.narBomb1 = {x:0, y:0, display: true}
+    this.narBomb2 = {x:0, y:0, display: true};
+    this.narBomb3 = {x:0, y:0, display: true};
 
-    this.sasBomb1 = {x: 0, y:0};
-    this.sasBomb2 = {x: 0, y:0};
-    this.sasBomb3 = {x: 0, y:0};
+    this.sasBomb1 = {x:0, y:0, display: true};
+    this.sasBomb2 = {x:0, y:0, display: true};
+    this.sasBomb3 = {x:0, y:0, display: true};
 
   }
 
@@ -81,7 +81,8 @@ class keyControls{
     }
     if (e.which === 67){
       this.cPressed = true;
-      console.log("bomb");
+      this.narBomb1 = true;
+      setTimeout( () => {this.narBomb1 = false;}, 3000);
     }
   }
 
@@ -95,9 +96,6 @@ class keyControls{
       this.sPressed = false;
     } else if (e.which === 68){
       this.dPressed = false;
-    }
-    if (e.which === 67){
-      this.cPressed = false;
     }
   }
 
@@ -167,8 +165,11 @@ class keyControls{
 
   step(){
     this.ctx.clearRect(220, 0, this.canvas.width, this.canvas.height);
-    debugger
     placeMap();
+    if (this.narBomb1 === true){
+      let newBomb = new Bomb(this.ctx, this.bombImg, this.player1.xPos, this.player1.yPos);
+      newBomb.explodeBomb();
+    }
     this.player1.step(this.narutoPos);
     this.player2.step(this.sasukePos);
     requestAnimationFrame(this.step.bind(this));
