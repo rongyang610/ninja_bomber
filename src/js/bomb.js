@@ -35,9 +35,6 @@ class bomb{
 
   explodeBomb(){
     this.drawBomb(0,2,this.xPos, this.yPos);
-    // setTimeout(this.drawBomb(0, 2, this.xPos, this.yPos), 500);
-    // setTimeout(this.drawBomb(1, 2, this.xPos, this.yPos), 1000);
-    // setTimeout(this.drawBomb(2, 2, this.xPos, this.yPos), 1500);
   }
 }
 

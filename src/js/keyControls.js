@@ -30,14 +30,14 @@ class keyControls{
     this.narutoPos = 0;
     this.sasukePos = 0;
 
-    this.narBomb1 = {x:0, y:0, display: false};
-    this.narBomb2 = {x:0, y:0, display: false};
-    this.narBomb3 = {x:0, y:0, display: false};
+    this.narBomb1 = {x:0, y:0, bombDisplay: false, explodeDisplay: false};
+    this.narBomb2 = {x:0, y:0, bombDisplay: false, explodeDisplay: false};
+    this.narBomb3 = {x:0, y:0, bombDisplay: false, explodeDisplay: false};
     this.narBombs = [];
 
-    this.sasBomb1 = {x:0, y:0, display: false};
-    this.sasBomb2 = {x:0, y:0, display: false};
-    this.sasBomb3 = {x:0, y:0, display: false};
+    this.sasBomb1 = {x:0, y:0, bombDisplay: false, explodeDisplay: false};
+    this.sasBomb2 = {x:0, y:0, bombDisplay: false, explodeDisplay: false};
+    this.sasBomb3 = {x:0, y:0, bombDisplay: false, explodeDisplay: false};
     this.sasBombs = [];
 
   }
@@ -111,35 +111,35 @@ class keyControls{
     }
     if (e.which === 67){
       if(this.narBombs.length === 0){
-        this.narBomb1.display = true;
+        this.narBomb1.bombDisplay = true;
         this.narBomb1.x = this.player1.xPos;
         this.narBomb1.y = this.player1.yPos;
         let droppedNarBomb1 = new Bomb(this.ctx, this.bombImg, this.narBomb1.x, this.narBomb1.y);
         this.narBombs.push(droppedNarBomb1);
         setTimeout( () => {
-          this.narBomb1 = {x:0, y:0, display: false};
+          this.narBomb1 = {x:0, y:0, bombDisplay: false, explodeDisplay: true};
           this.narBombs.shift();
-        }, 3000);
+        }, 1500);
       } else if (this.narBombs.length === 1){
-        this.narBomb2.display = true;
+        this.narBomb2.bombDisplay = true;
         this.narBomb2.x = this.player1.xPos;
         this.narBomb2.y = this.player1.yPos;
         let droppedNarBomb2 = new Bomb(this.ctx, this.bombImg, this.narBomb2.x, this.narBomb2.y);
         this.narBombs.push(droppedNarBomb2);
         setTimeout( () => {
-          this.narBomb2 = {x:0, y:0, display: false};
+          this.narBomb2 = {x:0, y:0, bombDisplay: false, explodeDisplay: true};
           this.narBombs.shift();
-        }, 3000);
+        }, 1500);
       } else if (this.narBombs.length === 2){
-        this.narBomb3.display = true;
+        this.narBomb3.bombDisplay = true;
         this.narBomb3.x = this.player1.xPos;
         this.narBomb3.y = this.player1.yPos;
         let droppedNarBomb3 = new Bomb(this.ctx, this.bombImg, this.narBomb3.x, this.narBomb3.y);
         this.narBombs.push(droppedNarBomb3);
         setTimeout( () => {
-          this.narBomb3 = {x:0, y:0, display: false};
+          this.narBomb3 = {x:0, y:0, bombDisplay: false, explodeDisplay: true};
           this.narBombs.shift();
-        }, 3000);
+        }, 1500);
       }
     }
   }
@@ -223,35 +223,35 @@ class keyControls{
     }
     if (e.which === 190){
       if(this.sasBombs.length === 0){
-        this.sasBomb1.display = true;
+        this.sasBomb1.bombDisplay = true;
         this.sasBomb1.x = this.player2.xPos;
         this.sasBomb1.y = this.player2.yPos;
         let droppedSasBomb1 = new Bomb(this.ctx, this.bombImg, this.sasBomb1.x, this.sasBomb1.y);
         this.sasBombs.push(droppedSasBomb1);
         setTimeout( () => {
-          this.sasBomb1 = {x:0, y:0, display: false};
+          this.sasBomb1 = {x:0, y:0, bombDisplay: false, explodeDisplay: true};
           this.sasBombs.shift();
-        }, 3000);
+        }, 1500);
       } else if (this.sasBombs.length === 1){
-        this.sasBomb2.display = true;
+        this.sasBomb2.bombDisplay = true;
         this.sasBomb2.x = this.player2.xPos;
         this.sasBomb2.y = this.player2.yPos;
         let droppedSasBomb2 = new Bomb(this.ctx, this.bombImg, this.sasBomb2.x, this.sasBomb2.y);
         this.sasBombs.push(droppedSasBomb2);
         setTimeout( () => {
-          this.sasBomb2 = {x:0, y:0, display: false};
+          this.sasBomb2 = {x:0, y:0, bombDisplay: false, explodeDisplay: true};
           this.sasBombs.shift();
-        }, 3000);
+        }, 1500);
       } else if (this.sasBombs.length === 2){
-        this.sasBomb3.display = true;
+        this.sasBomb3.bombDisplay = true;
         this.sasBomb3.x = this.player2.xPos;
         this.sasBomb3.y = this.player2.yPos;
         let droppedsasBomb3 = new Bomb(this.ctx, this.bombImg, this.sasBomb3.x, this.sasBomb3.y);
         this.sasBombs.push(droppedsasBomb3);
         setTimeout( () => {
-          this.sasBomb3 = {x:0, y:0, display: false};
+          this.sasBomb3 = {x:0, y:0, bombDisplay: false, explodeDisplay: true};
           this.sasBombs.shift();
-        }, 3000);
+        }, 1500);
       }
     }
   }
