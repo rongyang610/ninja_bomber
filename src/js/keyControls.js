@@ -66,7 +66,10 @@ class keyControls{
         !(((this.player1.xPos - 1) === this.player2.xPos && this.player1.yPos === this.player2.yPos)) &&
         !((this.narBomb1.x === this.player1.xPos - 1) && (this.narBomb1.y === this.player1.yPos)) &&
         !((this.narBomb2.x === this.player1.xPos - 1) && (this.narBomb2.y === this.player1.yPos)) &&
-        !((this.narBomb3.x === this.player1.xPos - 1) && (this.narBomb3.y === this.player1.yPos))
+        !((this.narBomb3.x === this.player1.xPos - 1) && (this.narBomb3.y === this.player1.yPos)) &&
+        !((this.sasBomb1.x === this.player1.xPos - 1) && (this.sasBomb1.y === this.player1.yPos)) &&
+        !((this.sasBomb2.x === this.player1.xPos - 1) && (this.sasBomb2.y === this.player1.yPos)) &&
+        !((this.sasBomb3.x === this.player1.xPos - 1) && (this.sasBomb3.y === this.player1.yPos))
         ){
         this.player1.xPos -= 1;
         this.narutoPos = 1;
@@ -76,7 +79,15 @@ class keyControls{
     } else if (e.which === 83){
       this.sPressed = true;
       if (this.player1.yPos !== 13 && this.player1.xPos % 2 !== 0 && 
-        !((this.player1.xPos === this.player2.xPos && (this.player1.yPos + 1) === this.player2.yPos))){
+        !((this.player1.xPos === this.player2.xPos && (this.player1.yPos + 1) === this.player2.yPos)) &&
+        !(((this.player1.xPos - 1) === this.player2.xPos && this.player1.yPos === this.player2.yPos)) &&
+        !((this.narBomb1.x === this.player1.xPos) && (this.narBomb1.y === this.player1.yPos + 1)) &&
+        !((this.narBomb2.x === this.player1.xPos) && (this.narBomb2.y === this.player1.yPos + 1)) &&
+        !((this.narBomb3.x === this.player1.xPos) && (this.narBomb3.y === this.player1.yPos + 1)) &&
+        !((this.sasBomb1.x === this.player1.xPos) && (this.sasBomb1.y === this.player1.yPos + 1)) &&
+        !((this.sasBomb2.x === this.player1.xPos) && (this.sasBomb2.y === this.player1.yPos + 1)) &&
+        !((this.sasBomb3.x === this.player1.xPos) && (this.sasBomb3.y === this.player1.yPos + 1))
+        ){
         this.player1.yPos += 1;
         this.narutoPos = 0;
       } else {
@@ -85,7 +96,14 @@ class keyControls{
     } else if (e.which === 68){
       this.dPressed = true;
       if (this.player1.xPos !== 13 && this.player1.yPos % 2 !== 0 && 
-        !(((this.player1.xPos + 1) === this.player2.xPos && this.player1.yPos === this.player2.yPos))){
+        !(((this.player1.xPos + 1) === this.player2.xPos && this.player1.yPos === this.player2.yPos)) &&
+        !((this.narBomb1.x === this.player1.xPos + 1) && (this.narBomb1.y === this.player1.yPos)) &&
+        !((this.narBomb2.x === this.player1.xPos + 1) && (this.narBomb2.y === this.player1.yPos)) &&
+        !((this.narBomb3.x === this.player1.xPos + 1) && (this.narBomb3.y === this.player1.yPos)) &&
+        !((this.sasBomb1.x === this.player1.xPos + 1) && (this.sasBomb1.y === this.player1.yPos)) &&
+        !((this.sasBomb2.x === this.player1.xPos + 1) && (this.sasBomb2.y === this.player1.yPos)) &&
+        !((this.sasBomb3.x === this.player1.xPos + 1) && (this.sasBomb3.y === this.player1.yPos))
+        ){
         this.player1.xPos += 1;
         this.narutoPos = 2;
       } else {
