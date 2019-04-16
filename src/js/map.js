@@ -1,5 +1,5 @@
 let mapComponents = new Image();
-mapComponents.src = "../src/images/sprites/MapAndBomb.png";
+mapComponents.src = "./src/images/sprites/MapAndBomb.png";
 mapComponents.onload = () => mapping();
 
 let canvas = document.getElementById('ninjaBomberCanvas');
