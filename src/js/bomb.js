@@ -39,7 +39,6 @@ class bomb{
   }
 
   placeBomb(){
-    const that = this;
     if (this.placed === false){
       this.drawBomb(0,2,this.xPos, this.yPos);
     }
@@ -53,7 +52,17 @@ class bomb{
   }
 
   explodeBomb(){
-    this.drawBomb(5, 3, this.xPos, this.yPos);
+    const {xPos, yPos, naruto, sasuke} = this;
+    if(naruto.dead || sasuke.dead){
+      this.frames = 20;
+    }
+    this.drawBomb(5, 3, xPos, yPos);
+    if(( yPos=== naruto.yPos && xPos === naruto.xPos)){
+      this.naruto.dead = true;
+    }
+    if((yPos === sasuke.yPos && xPos === sasuke.xPos)){
+      this.sasuke.dead = true;
+    }
     // console.log(this.sasuke.xPos, this.sasuke.yPos, this.naruto.xPos, this.naruto.yPos);
     //if the position of sasuke or naruto are in blast range then change their dead to true
     this.explodeUp();
