@@ -61,16 +61,4 @@ export default function mapping(){
       }
     }
   }
-  // for testingsa
-  // ctx.drawImage(
-  //   naruto,
-  //   10,
-  //   74,
-  //   28,
-  //   46,
-  //   0,
-  //   0,
-  //   20,
-  //   28.7
-  // );
 }

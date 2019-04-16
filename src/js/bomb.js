@@ -20,7 +20,7 @@ class bomb{
 
     this.xMapOffset = 220;
     this.frames = 0;
-    this.multiplier = 25;
+    this.multiplier = 40;
   }
 
   drawBomb(frameX, frameY, canvasX, canvasY){
@@ -41,7 +41,7 @@ class bomb{
     const {xPos, yPos, frames, multiplier, naruto, sasuke} = this;
 
     if(naruto.dead || sasuke.dead){
-      this.frames = (119 * multiplier);
+      this.frames = (109 * multiplier);
     }
     if (frames < (20*multiplier)){
       this.drawBomb(0, 2, xPos, yPos);
@@ -57,12 +57,12 @@ class bomb{
       this.drawBomb(1, 2, xPos, yPos);      
     } else if (frames < (90*multiplier)){
       this.drawBomb(2, 2, xPos, yPos);
-    } else if (frames < (120*multiplier)){
+    } else if (frames < (110*multiplier)){
       this.explodeBomb(xPos, yPos);
     }
     const nextFrame = requestAnimationFrame(this.placeBomb.bind(this));
     this.frames ++;
-    if (frames > (120*multiplier)){
+    if (frames > (110*multiplier)){
       cancelAnimationFrame(nextFrame);
     }
   }

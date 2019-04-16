@@ -18,11 +18,12 @@ class keyControls{
 
     this.nBomb = [];
     this.sBomb= [];
+    this.givenBombs = 3;
   }
 
   keyDownHandler(e){
     //Naruto Controls (in order of w,a,s,d,c)
-    const {ctx, bombImg, player1, player2, nBomb, sBomb} = this;
+    const {ctx, bombImg, player1, player2, nBomb, sBomb, givenBombs} = this;
     if (e.which === 87){
       //why do we need this (maybe it's because we are assigning a new class value? Even if I had const as let)
       this.narutoPos = 3;
@@ -54,8 +55,9 @@ class keyControls{
       }
     }
     if (e.which === 67){
-      if (nBomb.length < 3){
+      if (nBomb.length < givenBombs){
         nBomb.push(new Bomb(ctx, bombImg, player1.xPos, player1.yPos, player1, player2));
+        setTimeout(() => this.nBomb.shift(), 1700);
       }
     }
     
@@ -90,8 +92,9 @@ class keyControls{
       }
     }
     if (e.which === 190){
-      if (sBomb.length < 3){
+      if (sBomb.length < givenBombs){
         sBomb.push(new Bomb(ctx, bombImg, player2.xPos, player2.yPos, player1, player2));
+        setTimeout(() => this.sBomb.shift(), 1700);
       }
     }
   }
@@ -104,6 +107,7 @@ class keyControls{
     const {nBomb} = this;
     for (let i = 0; i < nBomb.length; i++) {
       nBomb[i].placeBomb();
+      // setTimeout(() => nBomb.shift(), 1500);
     }
   }
 
@@ -115,7 +119,7 @@ class keyControls{
   }
 
   renderAll(){
-    const {ctx, canvas, player1, player2, narutoPos, sasukePos, nBomb, sBomb} = this;
+    const {ctx, canvas, player1, player2, narutoPos, sasukePos, nBomb, sBomb, givenBombs} = this;
     ctx.clearRect(220, 0, canvas.width, canvas.height);
     placeMap();
     if (nBomb.length !== 0){
@@ -134,6 +138,9 @@ class keyControls{
     } else {
       console.log('Sasuke Died');
     }
+    // if (nBomb.length === givenBombs && sBomb.length === givenBombs){
+    //   console.log("No Winner");
+    // } else 
     if(!player1.dead && !player2.dead){
       requestAnimationFrame(this.renderAll.bind(this));
     }
