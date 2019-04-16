@@ -17,6 +17,7 @@ class Player{
     this.spriteXOffset = 46;
     this.spriteYOffset = 65;
     this.xMapOffset = 225.3;
+    this.dead = false;
 
     this.cycleLoop = [0, 1, 2, 3];
     this.cols = 4;

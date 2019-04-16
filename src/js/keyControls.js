@@ -71,9 +71,10 @@ class keyControls{
       }
     }
     if (e.which === 67){
-      const {ctx, bombImg, player1, nBomb} = this;
+      const {ctx, bombImg, player1, nBomb, player2} = this;
       if (nBomb.length < 3){
-        nBomb.push(new Bomb(ctx, bombImg, player1.xPos, player1.yPos));
+        nBomb.push(new Bomb(ctx, bombImg, player1.xPos, player1.yPos, player1, player2));
+        console.log(nBomb);
       }
     }
   }
@@ -118,7 +119,10 @@ class keyControls{
       }
     }
     if (e.which === 190){
-      
+      const {ctx, bombImg, player2, sBomb, player1} = this;
+      if (sBomb.length < 3){
+        sBomb.push(new Bomb(ctx, bombImg, player2.xPos, player2.yPos, player1, player2));
+      }
     }
   }
 
@@ -127,23 +131,39 @@ class keyControls{
     document.addEventListener("keydown", this.sasukeKeyDownHandler, false);
   }
 
-  renderBomb(){
+  renderNBomb(){
     const {nBomb} = this;
     for (let i = 0; i < nBomb.length; i++) {
       nBomb[i].placeBomb();
     }
-    setTimeout(() => this.nBomb = [], 6000);
+  }
+  renderSBomb(){
+    const {sBomb} = this;
+    for (let i = 0; i < sBomb.length; i++) {
+      sBomb[i].placeBomb();
+    }
   }
 
   renderAll(){
-    const {ctx, canvas, player1, player2, narutoPos, sasukePos, nBomb} = this;
+    const {ctx, canvas, player1, player2, narutoPos, sasukePos, nBomb, sBomb} = this;
     ctx.clearRect(220, 0, canvas.width, canvas.height);
     placeMap();
-    if (nBomb !== 0){
-      this.renderBomb();
+    if (nBomb.length !== 0){
+      this.renderNBomb();
     }
-    player1.step(narutoPos);
-    player2.step(sasukePos);
+    if (sBomb.length !== 0){
+      this.renderSBomb();
+    }
+    if (player1.dead === false){
+      player1.step(narutoPos);
+    } else {
+      console.log('Naruto Died');
+    }
+    if (player2.dead === false){
+      player2.step(sasukePos);
+    } else {
+      console.log('Sasuke Died');
+    }
     requestAnimationFrame(this.renderAll.bind(this));
   }
 }
