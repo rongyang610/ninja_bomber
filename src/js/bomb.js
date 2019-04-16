@@ -18,10 +18,9 @@ class bomb{
     this.spriteMapWidth = 28.7;
     this.spriteMapHeight = 28.7;
 
-    this.placed = false;
-    this.explodedSet = false;
     this.xMapOffset = 220;
     this.frames = 0;
+    this.multiplier = 25;
   }
 
   drawBomb(frameX, frameY, canvasX, canvasY){
@@ -39,43 +38,48 @@ class bomb{
   }
 
   placeBomb(){
-    if (this.placed === false){
-      this.drawBomb(0,2,this.xPos, this.yPos);
+    const {xPos, yPos, frames, multiplier, naruto, sasuke} = this;
+
+    if(naruto.dead || sasuke.dead){
+      this.frames = (119 * multiplier);
     }
-    if (!this.explodedSet){
-      setTimeout(() =>{
-          this.explodeBomb();
-          this.placed = true;
-        }, 1500);
-        this.explodedSet = true;
+    if (frames < (20*multiplier)){
+      this.drawBomb(0, 2, xPos, yPos);
+    } else if (frames < (40*multiplier)){
+      this.drawBomb(1, 2, xPos, yPos);
+    } else if(frames < (50*multiplier)){
+      this.drawBomb(0, 2, xPos, yPos);      
+    } else if(frames < (60*multiplier)){
+      this.drawBomb(1, 2, xPos, yPos);      
+    } else if(frames < (70*multiplier)){
+      this.drawBomb(2, 2, xPos, yPos);      
+    } else if(frames < (80*multiplier)){
+      this.drawBomb(1, 2, xPos, yPos);      
+    } else if (frames < (90*multiplier)){
+      this.drawBomb(2, 2, xPos, yPos);
+    } else if (frames < (120*multiplier)){
+      this.explodeBomb(xPos, yPos);
+    }
+    const nextFrame = requestAnimationFrame(this.placeBomb.bind(this));
+    this.frames ++;
+    if (frames > (120*multiplier)){
+      cancelAnimationFrame(nextFrame);
     }
   }
 
-  explodeBomb(){
-    const {xPos, yPos, naruto, sasuke} = this;
-    if(naruto.dead || sasuke.dead){
-      this.frames = 20;
-    }
-    this.drawBomb(5, 3, xPos, yPos);
-    if(( yPos=== naruto.yPos && xPos === naruto.xPos)){
+  explodeBomb(x, y){
+    const {naruto, sasuke} = this;
+    this.drawBomb(5, 3, x, y);
+    if(( y=== naruto.yPos && x === naruto.xPos)){
       this.naruto.dead = true;
     }
-    if((yPos === sasuke.yPos && xPos === sasuke.xPos)){
+    if((y === sasuke.yPos && x === sasuke.xPos)){
       this.sasuke.dead = true;
     }
-    // console.log(this.sasuke.xPos, this.sasuke.yPos, this.naruto.xPos, this.naruto.yPos);
-    //if the position of sasuke or naruto are in blast range then change their dead to true
     this.explodeUp();
     this.explodeDown();
     this.explodeLeft();
     this.explodeRight();
-    
-    const nextFrame = requestAnimationFrame(this.explodeBomb.bind(this));
-    this.frames++;
-    if (this.frames > 20) {
-      cancelAnimationFrame(nextFrame);
-    }
-    
   }
 
   explodeUp(){

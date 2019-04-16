@@ -22,7 +22,7 @@ class keyControls{
 
   keyDownHandler(e){
     //Naruto Controls (in order of w,a,s,d,c)
-    const {ctx, bombImg, player1, player2, nBomb} = this;
+    const {ctx, bombImg, player1, player2, nBomb, sBomb} = this;
     if (e.which === 87){
       //why do we need this (maybe it's because we are assigning a new class value? Even if I had const as let)
       this.narutoPos = 3;
@@ -104,10 +104,9 @@ class keyControls{
     const {nBomb} = this;
     for (let i = 0; i < nBomb.length; i++) {
       nBomb[i].placeBomb();
-      // setTimeout(() => nBomb.shift(), 1500);
     }
-    console.log(nBomb);
   }
+
   renderSBomb(){
     const {sBomb} = this;
     for (let i = 0; i < sBomb.length; i++) {
