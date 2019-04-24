@@ -34,3 +34,10 @@ canvas {
   border: 1px solid black; 
   margin-top: 20px;
 }
+
+.instructions{
+  position: absolute;
+  background-color: pink;
+  width: 600px;
+  height: 600px;
+}

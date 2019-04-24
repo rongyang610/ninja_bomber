@@ -5,18 +5,19 @@ class Player{
     this.yPos = yPos;
     this.nameImg = nameImg;
 
+    let num = 40;
     this.spriteSheetWidth = 28;
     this.spriteSheetHeight = 46;
-    this.startingX = 28.7;
-    this.startingY = 28.7;
-    this.spriteWidth = 20;
-    this.spriteHeight = 28.7;
+    this.startingX = num;
+    this.startingY = num;
+    this.spriteWidth = 27;
+    this.spriteHeight = num;
 
     this.spriteXStartPos = (10 - xOffsetPlayer);
     this.spriteYStartPos = 9;
     this.spriteXOffset = 46;
     this.spriteYOffset = 65;
-    this.xMapOffset = 225.3;
+    this.xMapOffset = 5;
     this.dead = false;
 
     this.cycleLoop = [0, 1, 2, 3];

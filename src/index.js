@@ -14,21 +14,7 @@ sasuke.src = "./src/images/sprites/sasuke.png";
 let bomb = new Image();
 bomb.src = "./src/images/sprites/MapAndBomb.png";
 // bomb.onload = () => bomberDraw();
-
+// let narutoInstructions = new Instructions(ctx, canvas, 0, 0, 0, naruto);
 let controls = new keyControls(ctx, canvas, sasuke, naruto, bomb);
 controls.eventListner();
 controls.renderAll();
-
-// function bomberDraw(){
-//   // ctx.drawImage(
-//   //   bomb,
-//   //   3.5 + (52*2),
-//   //   2.5 + (52*2),
-//   //   47.5,
-//   //   47.5,
-//   //   0,
-//   //   0,
-//   //   28.7,
-//   //   28.7
-//   // );
-// }

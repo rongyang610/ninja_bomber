@@ -18,18 +18,18 @@ let ctx = canvas.getContext('2d');
 // dHeight: Height of cut out sprite shown on canvas
 
 //constants for mapping
+let a = 40;
 const spriteXStartPos = 3.5;
 const spriteYStartPos = 2.5;
 const spriteXOffset = 52;
 const spriteYOffset = 52;
 const spriteSheetWidth = 47.5;
 const spriteSheetHeight = 47.5;
-const startingX = 28.7;
-const startingY = 28.7;
-const spriteMapWidth = 28.7;
-const spriteMapHeight = 28.7;
+const startingX = a;
+const startingY = a;
+const spriteMapWidth = a;
+const spriteMapHeight = a;
 
-const xMapOffset = 220;
 
 function drawMap(frameX, frameY, canvasX, canvasY){
   ctx.drawImage(
@@ -38,7 +38,7 @@ function drawMap(frameX, frameY, canvasX, canvasY){
     (frameY * spriteYOffset) + spriteYStartPos,
     spriteSheetWidth,
     spriteSheetHeight,
-    (startingX * canvasX) + xMapOffset,
+    (startingX * canvasX),
     (startingY * canvasY),
     spriteMapWidth,
     spriteMapHeight

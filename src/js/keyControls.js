@@ -18,7 +18,7 @@ class keyControls{
 
     this.nBomb = [];
     this.sBomb= [];
-    this.givenBombs = 3;
+    this.givenBombs = 4;
   }
 
   keyDownHandler(e){

@@ -13,12 +13,11 @@ class bomb{
     this.spriteYOffset = 52;
     this.spriteSheetWidth = 47;
     this.spriteSheetHeight = 47.5;
-    this.startingX = 28.7;
-    this.startingY = 28.7;
-    this.spriteMapWidth = 28.7;
-    this.spriteMapHeight = 28.7;
+    this.startingX = 40;
+    this.startingY = 40;
+    this.spriteMapWidth = 40;
+    this.spriteMapHeight = 40;
 
-    this.xMapOffset = 220;
     this.frames = 0;
     this.multiplier = 40;
   }
@@ -30,7 +29,7 @@ class bomb{
       (frameY * this.spriteYOffset) + this.spriteYStartPos,
       this.spriteSheetWidth,
       this.spriteSheetHeight,
-      (this.startingX * canvasX) + this.xMapOffset,
+      (this.startingX * canvasX),
       (this.startingY * canvasY),
       this.spriteMapWidth,
       this.spriteMapHeight
