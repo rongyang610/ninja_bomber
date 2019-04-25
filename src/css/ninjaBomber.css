@@ -8,11 +8,14 @@ body {
 }
 
 .canvas-main-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  height: 100vh;
+  position: absolute;
+  /* background-color: pink; */
+  width: 600px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 60px;
 }
 
 .canvas-container{
@@ -20,6 +23,22 @@ body {
   align-content: center;
   display: flex;
   flex-direction: column;
+}
+
+a.github:visited{
+  color: #F88F14;
+}
+
+a.github{
+  color: #F88F14;
+}
+
+a.linkedIn{
+  color: #9200E4;
+}
+
+a.linkedIn:visited{
+  color: #9200E4;
 }
 
 img{
@@ -32,12 +51,112 @@ canvas {
   background: #eee; 
   display: block;
   border: 1px solid black; 
-  margin-top: 20px;
+  margin-top: 36px;
 }
 
-.instructions{
+.menu-main-container{
   position: absolute;
-  background-color: pink;
   width: 600px;
   height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: .95;
+  margin-top: 36px;
+}
+
+.logo-placement{
+  width: 600px;
+  height: 70px;
+  background-color: white;
+  opacity: 0;
+}
+
+.menu-container-bg{
+  color: white;
+  font-weight: 700;
+  background-color: black;
+  width: 600px;
+  height: 605px;
+}
+
+.start-custom{
+  display: flex;
+  align-items: center;
+  width: 600px;
+  height: 601px;
+}
+
+.start-container-contents{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 600px;
+  height: 300px;
+}
+
+.start-text{
+  font-size: 30px;
+}
+
+.instructions-container-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  padding: 20px 0 40px 0;
+}
+
+.instructions-title{
+  padding-top: 30px;
+}
+
+.controls-main-container{
+  display: flex;
+  justify-content: space-around;
+  height: 300px;
+}
+
+.player-controls-container{
+  font-size: 18;
+  width: 145px;
+}
+.controls-instructions-component{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.key-images{
+  width: 30px;
+  height: 30px;
+  border: 1px solid white;
+}
+.instructions-text{
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.clicking-statement{
+  font-size: 20px;
+  padding-top: 20px;
+}
+
+.profile-main-container{
+  display: flex;
+  justify-content: center;
+  color: white;
+  width: 600px;
+}
+
+.profile-container{
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  width: 300px;
+  margin: 20px 0;
+  font-size: 40px;
 }

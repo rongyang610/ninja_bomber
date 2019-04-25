@@ -1,17 +1,126 @@
 <html>
   <head>
+    <link rel="shortcut icon" href="./src/images/favIcon.png">
     <title>Ninja Bomber</title>
     <link rel="stylesheet" type="text/css" href="./src/css/ninjaBomber.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
   <body>
     <div class="canvas-main-container">
       <div class="canvas-container">
-        <img src="./src/images/NinjaBomberLogo.png" alt="Logo">
         <canvas id="ninjaBomberCanvas" width="600" height="600"></canvas>
         <script src="./dist/main.js"></script>
-        <!-- <div class="instructions">
-            HELP ME
-        </div> -->
+        
+        <div class="profile-main-container">
+          <div class="profile-container">
+            <a href="https://github.com/rongyang610" target="_blank" class="github"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/rong-jj-yang-502150163/" target="_blank" class="linkedIn"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div id="start" class="menu-main-container">
+          <div class="menu-container-bg start-custom">
+            <div class="start-container-contents">
+              <div><img src="./src/images/NinjaBomberLogo.png" alt="logo"></div>
+              <div class="start-text">Click Anywhere to Go to Instructions</div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="instructions" class="menu-main-container" style="visibility: hidden;">
+            <div class="menu-container-bg">
+              <div class="instructions-title"><center>INSTRUCTIONS</center></div>
+              <div class="instructions-container-text">
+                <div>Place bombs on the map to try to blow up the other player.</div>
+                <div>Hint1: Each player can have a maximum of 4 bombs on the map.</div>
+                <div>Hint2: Bombs explode until it hits an unbreakable object (walls).</div>
+              </div>
+              <div class="controls-main-container">
+                <div class="player-controls-container">
+                  <center> Player 1 Controls: </center>
+                  <div class="controls-instructions-component">
+                    <div>
+                      <img class="key-images" src="./src/images/wKey.png" alt="w key">
+                    </div>
+                    <div class="instructions-text">Move Up</div>
+                  </div>
+                  <div class="controls-instructions-component">
+                    <div>
+                      <img class="key-images" src="./src/images/aKey.png" alt="a key">
+                    </div>
+                    <div class="instructions-text">Move Left</div> 
+                  </div>
+                  <div class="controls-instructions-component">
+                    <div>
+                      <img class="key-images" src="./src/images/dKey.png" alt="d key">
+                    </div>
+                    <div class="instructions-text">Move Right</div>
+                  </div>
+                  <div class="controls-instructions-component">
+                    <div>
+                      <img class="key-images" src="./src/images/sKey.png" alt="s key">
+                    </div>
+                    <div class="instructions-text">Move Down</div>
+                  </div>
+                  <div class="controls-instructions-component">
+                    <div>
+                      <img class="key-images" src="./src/images/cKey.png" alt="c key">
+                    </div>
+                    <div class="instructions-text">Place Bomb</div>
+                  </div>
+                </div>
+    
+                <div class="player-controls-container">
+                    <center> Player 2 Controls: </center>
+                    <div class="controls-instructions-component">
+                      <div>
+                        <img class="key-images" src="./src/images/upKey.png" alt="up key">
+                      </div>
+                      <div class="instructions-text">Move Up</div>
+                    </div>
+                    <div class="controls-instructions-component">
+                      <div>
+                        <img class="key-images" src="./src/images/leftKey.png" alt="left key">
+                      </div>
+                      <div class="instructions-text">Move Left</div> 
+                    </div>
+                    <div class="controls-instructions-component">
+                      <div>
+                        <img class="key-images" src="./src/images/rightKey.png" alt="right key">
+                      </div>
+                      <div class="instructions-text">Move Right</div>
+                    </div>
+                    <div class="controls-instructions-component">
+                      <div>
+                        <img class="key-images" src="./src/images/downKey.png" alt="down key">
+                      </div>
+                      <div class="instructions-text">Move Down</div>
+                    </div>
+                    <div class="controls-instructions-component">
+                      <div>
+                        <img class="key-images" src="./src/images/periodKey.png" alt="period key">
+                      </div>
+                      <div class="instructions-text">Place Bomb</div>
+                    </div>
+                  </div>
+              </div>
+              <div class="clicking-statement">
+                <center>Click Anywhere to Continue</center>  
+              </div>
+            </div>
+
+        </div>
+
+        <div id="gameOver" class="menu-main-container" style="visibility: hidden;">
+            <div class="menu-container-bg start-custom">
+              <div class="start-container-contents">
+                <div><img src="./src/images/narutoGameOver.png" alt="logo"></div>
+                <div id="loser" class="start-text"></div>
+                <div class="start-text">Click Anywhere to Play Again</div>
+              </div>
+            </div>
+        </div>
+
       </div>
     </div>
   </body>

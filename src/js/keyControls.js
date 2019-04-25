@@ -131,12 +131,16 @@ class keyControls{
     if (player1.dead === false){
       player1.step(narutoPos);
     } else {
-      console.log('Naruto Died');
+      const gameOver = document.getElementById("gameOver");
+      document.getElementById("loser").innerHTML = `Player 1 Lost!`;
+      gameOver.setAttribute("style", "visbility: visbile");
     }
     if (player2.dead === false){
       player2.step(sasukePos);
     } else {
-      console.log('Sasuke Died');
+      const gameOver = document.getElementById("gameOver");
+      document.getElementById("loser").innerHTML = `Player 2 Lost!`;
+      gameOver.setAttribute("style", "visbility: visbile");
     }
     // if (nBomb.length === givenBombs && sBomb.length === givenBombs){
     //   console.log("No Winner");
