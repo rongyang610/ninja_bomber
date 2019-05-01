@@ -23,6 +23,7 @@ class keyControls{
 
   keyDownHandler(e){
     //Naruto Controls (in order of w,a,s,d,c)
+    e.preventDefault();
     const {ctx, bombImg, player1, player2, nBomb, sBomb, givenBombs} = this;
     if (e.which === 87){
       //why do we need this (maybe it's because we are assigning a new class value? Even if I had const as let)
@@ -119,7 +120,7 @@ class keyControls{
   }
 
   renderAll(){
-    const {ctx, canvas, player1, player2, narutoPos, sasukePos, nBomb, sBomb, givenBombs} = this;
+    const {ctx, canvas, player1, player2, narutoPos, sasukePos, nBomb, sBomb} = this;
     ctx.clearRect(220, 0, canvas.width, canvas.height);
     placeMap();
     if (nBomb.length !== 0){
@@ -142,9 +143,6 @@ class keyControls{
       document.getElementById("loser").innerHTML = `Player 2 Lost!`;
       gameOver.setAttribute("style", "visbility: visbile");
     }
-    // if (nBomb.length === givenBombs && sBomb.length === givenBombs){
-    //   console.log("No Winner");
-    // } else 
     if(!player1.dead && !player2.dead){
       requestAnimationFrame(this.renderAll.bind(this));
     }
