@@ -134,14 +134,14 @@ class keyControls{
     } else {
       const gameOver = document.getElementById("gameOver");
       document.getElementById("loser").innerHTML = `Player 1 Lost!`;
-      gameOver.setAttribute("style", "visbility: visbile");
+      gameOver.setAttribute("style", "visbility: visible");
     }
     if (player2.dead === false){
       player2.step(sasukePos);
     } else {
       const gameOver = document.getElementById("gameOver");
       document.getElementById("loser").innerHTML = `Player 2 Lost!`;
-      gameOver.setAttribute("style", "visbility: visbile");
+      gameOver.setAttribute("style", "visbility: visible");
     }
     if(!player1.dead && !player2.dead){
       requestAnimationFrame(this.renderAll.bind(this));
