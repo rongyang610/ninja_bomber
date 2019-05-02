@@ -1,11 +1,9 @@
 import placeMap from './js/map';
 import keyControls from './js/keyControls';
+import { isContext } from 'vm';
 
 //add event listenr to player
 document.addEventListener("DOMContentLoaded", () => {
-  let canvas = document.getElementById('ninjaBomberCanvas');
-  let ctx = canvas.getContext('2d');
-
   const start = document.getElementById('start');
   const instructions = document.getElementById("instructions");
   const gameOver = document.getElementById("gameOver");
@@ -26,6 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const gameStart = () => {
+    let canvas = document.getElementById('ninjaBomberCanvas');
+    let ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     let naruto = new Image();
     naruto.src = "./src/images/sprites/naruto.png";
     

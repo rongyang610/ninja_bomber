@@ -23,7 +23,6 @@ class keyControls{
 
   keyDownHandler(e){
     //Naruto Controls (in order of w,a,s,d,c)
-    e.preventDefault();
     const {ctx, bombImg, player1, player2, nBomb, sBomb, givenBombs} = this;
     if (e.which === 87){
       //why do we need this (maybe it's because we are assigning a new class value? Even if I had const as let)
@@ -58,12 +57,13 @@ class keyControls{
     if (e.which === 67){
       if (nBomb.length < givenBombs){
         nBomb.push(new Bomb(ctx, bombImg, player1.xPos, player1.yPos, player1, player2));
-        setTimeout(() => this.nBomb.shift(), 1700);
+        // setTimeout(() => this.nBomb.shift(), 500);
       }
     }
     
-    //Sasuke Controls (in order of w,a,s,d,c)
+    //Sasuke Controls (in order of up,left,down,right,period)
     if (e.which == 38){
+      e.preventDefault();
       this.sasukePos = 3;
       if (player2.yPos !== 1 && player2.xPos % 2 !== 0 && 
         !((player1.xPos === player2.xPos && (player2.yPos - 1) === player1.yPos))
@@ -71,6 +71,7 @@ class keyControls{
         this.player2.yPos -= 1;
       }
     } else if (e.which === 37){
+      e.preventDefault();
       this.sasukePos = 1;
       if (player2.xPos !== 1 && player2.yPos % 2 !== 0 && 
         !(((player2.xPos - 1) === player1.xPos && player1.yPos === player2.yPos))
@@ -78,6 +79,7 @@ class keyControls{
         this.player2.xPos -= 1;
       }
     } else if (e.which === 40){
+      e.preventDefault();
       this.sasukePos = 0;
       if (player2.yPos !== 13 && player2.xPos % 2 !== 0 && 
         !((player1.xPos === player2.xPos && (player2.yPos + 1) === player1.yPos))
@@ -85,6 +87,7 @@ class keyControls{
         this.player2.yPos += 1;
       }
     } else if (e.which === 39){
+      e.preventDefault();
       this.sasukePos = 2;
       if (player2.xPos !== 13 && player2.yPos % 2 !== 0 && 
         !(((player2.xPos + 1) === player1.xPos && player1.yPos === player2.yPos))
@@ -95,7 +98,7 @@ class keyControls{
     if (e.which === 190){
       if (sBomb.length < givenBombs){
         sBomb.push(new Bomb(ctx, bombImg, player2.xPos, player2.yPos, player1, player2));
-        setTimeout(() => this.sBomb.shift(), 1700);
+        // setTimeout(() => this.sBomb.shift(), 3000);
       }
     }
   }
@@ -108,7 +111,6 @@ class keyControls{
     const {nBomb} = this;
     for (let i = 0; i < nBomb.length; i++) {
       nBomb[i].placeBomb();
-      // setTimeout(() => nBomb.shift(), 1500);
     }
   }
 
@@ -134,17 +136,18 @@ class keyControls{
     } else {
       const gameOver = document.getElementById("gameOver");
       document.getElementById("loser").innerHTML = `Player 1 Lost!`;
-      gameOver.setAttribute("style", "visbility: visible");
+      setTimeout(() => gameOver.setAttribute("style", "visbility: visible"), 500);
     }
     if (player2.dead === false){
       player2.step(sasukePos);
     } else {
       const gameOver = document.getElementById("gameOver");
       document.getElementById("loser").innerHTML = `Player 2 Lost!`;
-      gameOver.setAttribute("style", "visbility: visible");
+      setTimeout(() => gameOver.setAttribute("style", "visbility: visible"), 500);
     }
-    if(!player1.dead && !player2.dead){
-      requestAnimationFrame(this.renderAll.bind(this));
+    const rending = requestAnimationFrame(this.renderAll.bind(this));
+    if(player1.dead || player2.dead){
+      cancelAnimationFrame(rending);
     }
   }
 }

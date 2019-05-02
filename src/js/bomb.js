@@ -60,10 +60,10 @@ class bomb{
       this.explodeBomb(xPos, yPos);
     }
     const nextFrame = requestAnimationFrame(this.placeBomb.bind(this));
-    this.frames ++;
     if (frames > (110*multiplier)){
       cancelAnimationFrame(nextFrame);
     }
+    this.frames ++;
   }
 
   explodeBomb(x, y){

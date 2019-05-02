@@ -9,7 +9,6 @@ body {
 
 .canvas-main-container{
   position: absolute;
-  /* background-color: pink; */
   width: 600px;
   height: 600px;
   top: 50%;
@@ -24,26 +23,41 @@ body {
   flex-direction: column;
 }
 
-a.github:visited{
-  color: #F88F14;
-}
-
-a.github{
-  color: #F88F14;
-}
-
-a.linkedIn{
-  color: #9200E4;
-}
-
-a.linkedIn:visited{
-  color: #9200E4;
-}
-
 img{
   margin: 0 auto;
   width: 350px;
   height: 50px;
+}
+
+a.orange:visited{
+  color: #F88F14;
+}
+
+a.orange{
+  color: #F88F14;
+}
+
+a.purple{
+  color: #9200E4;
+}
+
+a.purple:visited{
+  color: #9200E4;
+}
+
+a.personal{
+  color:#F88F14;
+  width: 40px;
+  height: 40px
+}
+
+a.personal:visited{
+  color:#F88F14;
+}
+
+a.personal > img{
+  width: 40px;
+  height: 40px
 }
 
 canvas { 
@@ -155,7 +169,7 @@ canvas {
   display: flex;
   justify-content: space-between;
   color: white;
-  width: 300px;
+  width: 520px;
   margin: 40px 0 60px 0;
   font-size: 40px;
 }
