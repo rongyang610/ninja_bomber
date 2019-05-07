@@ -19,8 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   gameOver.addEventListener("click", () => {
-    gameOver.setAttribute("style", "visibility: hidden");
-    start.setAttribute("style", "visibility:visible");
+    location.reload();
   });
 
   const gameStart = () => {

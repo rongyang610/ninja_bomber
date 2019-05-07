@@ -57,7 +57,7 @@ class keyControls{
     if (e.which === 67){
       if (nBomb.length < givenBombs){
         nBomb.push(new Bomb(ctx, bombImg, player1.xPos, player1.yPos, player1, player2));
-        // setTimeout(() => this.nBomb.shift(), 500);
+        setTimeout(() => nBomb.shift(), 1800);
       }
     }
     
@@ -98,7 +98,7 @@ class keyControls{
     if (e.which === 190){
       if (sBomb.length < givenBombs){
         sBomb.push(new Bomb(ctx, bombImg, player2.xPos, player2.yPos, player1, player2));
-        // setTimeout(() => this.sBomb.shift(), 3000);
+        setTimeout(() => sBomb.shift(), 1800);
       }
     }
   }
